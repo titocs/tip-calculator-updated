@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="stylesheet" href="dist/output.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <title>Frontend Mentor | Tip calculator app</title>
+</head>
+<body class="font-spaceMono bg-Light-grayish-cyan">
+    <header class="my-8 hover:cursor-default">
+        <h1 class="text-Dark-grayish-cyan font-bold text-center tracking-[10px] text-2xl">SPLI</h1>
+        <h1 class="text-Dark-grayish-cyan font-bold text-center tracking-[10px] text-2xl">TTER</h1>
+    </header>
+    
+    <main class="bg-white px-6 py-7 rounded-3xl md:px-10 md:mx-14 md:mb-10 md:pb-10 lg:mx-[152px] xl:flex xl:flex-row xl:gap-8 xl:mx-[17.5%]">
+        <section class="xl:basis-1/2">
+            <div class="mb-[27px]">
+                <p class="text-Dark-grayish-cyan font-bold pb-2">Bill</p>
+                <div class="flex items-center bg-Very-light-grayish-cyan py-2 px-4 rounded-md">
+                    <div class="">
+                        <img class="w-[11px]" src="/images/icon-dollar.svg" alt="">
+                    </div>
+                    <input id="billInput" class="text-Very-dark-cyan font-bold text-[22px] bg-Very-light-grayish-cyan text-right ml-auto focus:outline-none" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');" placeholder="0">
+                </div>
+            </div>
+
+            <div class="mb-[27px]">
+                <p class="text-Dark-grayish-cyan font-bold pb-2 mb-2">Select Tip %</p>
+                <div class="grid grid-cols-2 text-white gap-4 md:grid-cols-3">
+                    <button class="tip-value bg-Very-dark-cyan text-center rounded-md p-2 transition duration-200 text-2xl font-bold hover:bg-Strong-cyan hover:text-Very-dark-cyan">5%</button>
+                    <button class="tip-value bg-Very-dark-cyan text-center rounded-md p-2 transition duration-200 text-2xl font-bold hover:bg-Strong-cyan hover:text-Very-dark-cyan">10%</button>
+                    <button class="tip-value bg-Very-dark-cyan text-center rounded-md p-2 transition duration-200 text-2xl font-bold hover:bg-Strong-cyan hover:text-Very-dark-cyan">15%</button>
+                    <button class="tip-value bg-Very-dark-cyan text-center rounded-md p-2 transition duration-200 text-2xl font-bold hover:bg-Strong-cyan hover:text-Very-dark-cyan">25%</button>
+                    <button class="tip-value bg-Very-dark-cyan text-center rounded-md p-2 transition duration-200 text-2xl font-bold hover:bg-Strong-cyan hover:text-Very-dark-cyan">50%</button>
+                    <div id="custom-tip-percentage" class="bg-Very-light-grayish-cyan text-center rounded-md p-2 text-2xl font-bold">
+                        <input id="customInput" class="max-w-full pr-2 text-Very-dark-cyan font-bold text-[22px] bg-Very-light-grayish-cyan text-right focus:outline-none placeholder:text-Dark-grayish-cyan placeholder:text-2xl" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');" placeholder="Custom">
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-[27px]">
+                <div class="flex justify-between pb-2 font-bold">
+                    <p class="text-Dark-grayish-cyan">Number of People</p>
+                    <p id="text-danger-empty" class="text-red-400 font-bold">Can't be zero</p>
+                </div>
+                
+                <div id="box-danger" class="flex items-center bg-Very-light-grayish-cyan py-2 px-4 rounded-md border-red-400 border">
+                    <div class="">
+                        <img class="w-[14px]" src="/images/icon-person.svg" alt="">
+                    </div>
+                    <input id="numberPeopleInput" class="text-Very-dark-cyan font-bold text-[22px] bg-Very-light-grayish-cyan text-right focus:outline-none md:flex-grow md:ml-auto" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');" placeholder="0">
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-Very-dark-cyan p-5 rounded-xl md:px-10 xl:basis-1/2 xl:flex xl:flex-col xl:justify-between xl:py-8">
+            <div class="mt-5 mb-7">
+                <div class="flex justify-between mb-5 xl:mb-[52px] hover:cursor-default">
+                    <div class="">
+                        <h1 class="text-white font-bold">Tip Amount</h1>
+                        <p class="text-Dark-grayish-cyan font-bold text-sm">/ person</p>
+                    </div>
+                    <p id="displayTipAmount" class="text-Strong-cyan font-bold text-3xl xl:text-[42px]"><span>$</span>0.00</p>
+                </div>
+                <div class="flex justify-between hover:cursor-default">
+                    <div class="">
+                        <h1 class="text-white font-bold">Total</h1>
+                        <p class="text-Dark-grayish-cyan font-bold text-sm">/ person</p>
+                    </div>
+                    <p id="displayTotal" class="text-Strong-cyan font-bold text-3xl xl:text-[42px]"><span>$</span>0.00</p>
+                </div>
+            </div>
+            <button id="resetButton" class="bg-Strong-cyan text-center w-full text-Very-dark-cyan opacity-20 cursor-not-allowed font-bold text-xl p-[10px] rounded-md xl:mt-auto">RESET</button>
+        </section>
+    </main>
+    
+    <script src="js/script.js"></script>
+    <!-- <div class="attribution">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+        Coded by <a href="#">Tito Candra Septio</a>.
+    </div> -->
+</body>
+</html>
